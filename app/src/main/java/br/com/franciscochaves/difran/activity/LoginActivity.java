@@ -1,5 +1,6 @@
 package br.com.franciscochaves.difran.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,5 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void abrirCadastroUsuario(View view) {
+        Intent intent = new Intent(LoginActivity.this, CadastroUsuarioActivity.class);
+        startActivity(intent);
     }
 }
