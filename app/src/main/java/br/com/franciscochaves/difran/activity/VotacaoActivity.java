@@ -1,6 +1,7 @@
 package br.com.franciscochaves.difran.activity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,8 @@ public class VotacaoActivity extends AppCompatActivity {
     private ImageView emojiRuim;
     private ImageView emojiPessimo;
 
+    private MediaPlayer mediaPlayer;
+
     private static final int VOTO_EXCELENTE = 1;
     private static final int VOTO_BOM = 2;
     private static final int VOTO_MEDIO = 3;
@@ -32,6 +35,19 @@ public class VotacaoActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
     private String idUsuarioLogado;
+
+
+    @Override
+    protected void onDestroy() {
+
+        if(mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +59,8 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiMedio = findViewById(R.id.image_emoji_medio);
         emojiRuim = findViewById(R.id.image_emoji_ruim);
         emojiPessimo = findViewById(R.id.image_emoji_pessimo);
+
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.voto);
 
 
         firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -56,6 +74,7 @@ public class VotacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 votar(VOTO_EXCELENTE);
                 abrirTelaAgradecimeto();
+                tocarMusica();
             }
         });
 
@@ -64,6 +83,7 @@ public class VotacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 votar(VOTO_BOM);
                 abrirTelaAgradecimeto();
+                tocarMusica();
             }
         });
 
@@ -72,6 +92,7 @@ public class VotacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 votar(VOTO_MEDIO);
                 abrirTelaAgradecimeto();
+                tocarMusica();
             }
         });
 
@@ -80,6 +101,7 @@ public class VotacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 votar(VOTO_RUIM);
                 abrirTelaAgradecimeto();
+                tocarMusica();
             }
         });
 
@@ -88,6 +110,7 @@ public class VotacaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 votar(VOTO_PESSIMO);
                 abrirTelaAgradecimeto();
+                tocarMusica();
             }
         });
 
@@ -115,5 +138,13 @@ public class VotacaoActivity extends AppCompatActivity {
                 .child(dataIdVoto)
                 .child(String.valueOf(dataVoto))
                 .setValue(voto);
+    }
+
+    private void tocarMusica() {
+
+        if( mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+
     }
 }
