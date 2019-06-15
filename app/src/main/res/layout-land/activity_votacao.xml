@@ -31,12 +31,12 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/emoji02"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mage_emoji_medio"
+        app:layout_constraintEnd_toStartOf="@+id/image_emoji_medio"
         app:layout_constraintStart_toEndOf="@+id/image_emoji_excelente"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/mage_emoji_medio"
+        android:id="@+id/image_emoji_medio"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
@@ -45,12 +45,12 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/emoji03"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mage_emoji_ruim"
+        app:layout_constraintEnd_toStartOf="@+id/image_emoji_ruim"
         app:layout_constraintStart_toEndOf="@+id/image_emoji_bom"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/mage_emoji_ruim"
+        android:id="@+id/image_emoji_ruim"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
@@ -59,12 +59,12 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/emoji04"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mage_emoji_pessimo"
-        app:layout_constraintStart_toEndOf="@+id/mage_emoji_medio"
+        app:layout_constraintEnd_toStartOf="@+id/image_emoji_pessimo"
+        app:layout_constraintStart_toEndOf="@+id/image_emoji_medio"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/mage_emoji_pessimo"
+        android:id="@+id/image_emoji_pessimo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
@@ -74,7 +74,7 @@
         android:src="@drawable/emoji05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mage_emoji_ruim"
+        app:layout_constraintStart_toEndOf="@+id/image_emoji_ruim"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
