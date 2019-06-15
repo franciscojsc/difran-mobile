@@ -5,18 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.franciscochaves.difran.R;
 import br.com.franciscochaves.difran.config.ConfiguracaoFirebase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
+    private Button botaoSair;
+    private ImageView votacao;
+    private ImageView grafico;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -24,15 +24,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = findViewById(R.id.button_logout);
+        botaoSair = findViewById(R.id.button_sair);
+        votacao = findViewById(R.id.image_votacao);
+        grafico = findViewById(R.id.image_grafico);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        botaoSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
                 firebaseAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
+            }
+        });
+
+        votacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), VotacaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        grafico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GraficoActivity.class);
+                startActivity(intent);
             }
         });
 
