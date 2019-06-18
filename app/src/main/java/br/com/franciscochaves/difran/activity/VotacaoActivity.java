@@ -14,6 +14,7 @@ import java.util.Calendar;
 
 import br.com.franciscochaves.difran.R;
 import br.com.franciscochaves.difran.config.ConfiguracaoFirebase;
+import br.com.franciscochaves.difran.config.Constante;
 
 public class VotacaoActivity extends AppCompatActivity {
 
@@ -24,12 +25,6 @@ public class VotacaoActivity extends AppCompatActivity {
     private ImageView emojiPessimo;
 
     private MediaPlayer mediaPlayer;
-
-    private static final int VOTO_EXCELENTE = 1;
-    private static final int VOTO_BOM = 2;
-    private static final int VOTO_MEDIO = 3;
-    private static final int VOTO_RUIM = 4;
-    private static final int VOTO_PESSIMO = 5;
 
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
@@ -71,7 +66,7 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiExcelente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                votar(VOTO_EXCELENTE);
+                votar(Constante.VOTO_EXCELENTE);
                 abrirTelaAgradecimeto();
                 tocarMusica();
             }
@@ -80,7 +75,7 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiBom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                votar(VOTO_BOM);
+                votar(Constante.VOTO_BOM);
                 abrirTelaAgradecimeto();
                 tocarMusica();
             }
@@ -89,7 +84,7 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiMedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                votar(VOTO_MEDIO);
+                votar(Constante.VOTO_MEDIO);
                 abrirTelaAgradecimeto();
                 tocarMusica();
             }
@@ -98,7 +93,7 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiRuim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                votar(VOTO_RUIM);
+                votar(Constante.VOTO_RUIM);
                 abrirTelaAgradecimeto();
                 tocarMusica();
             }
@@ -107,7 +102,7 @@ public class VotacaoActivity extends AppCompatActivity {
         emojiPessimo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                votar(VOTO_PESSIMO);
+                votar(Constante.VOTO_PESSIMO);
                 abrirTelaAgradecimeto();
                 tocarMusica();
             }
