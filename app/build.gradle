@@ -29,6 +29,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation 'com.google.firebase:firebase-auth:16.2.0'
     implementation 'com.android.support:design:28+'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
