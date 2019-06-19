@@ -123,6 +123,7 @@ public class VotacaoActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
+        month +=1;
 
         String dataIdVoto = day + "-" + month + "-" + year;
 

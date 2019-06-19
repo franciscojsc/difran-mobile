@@ -8,13 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 import br.com.franciscochaves.difran.R;
+import br.com.franciscochaves.difran.config.ConfiguracaoFirebase;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
@@ -27,6 +34,16 @@ public class GraficoActivity extends AppCompatActivity {
     private PieChartView mChart;
     private PieChartData mPieChartData;
 
+    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReferenceVotos;
+    private FirebaseAuth firebaseAuth;
+    private String idUsuarioLogado;
+
+    private String date;
+    private String dataIdVoto;
+
+    private List<Integer> votos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +51,31 @@ public class GraficoActivity extends AppCompatActivity {
 
         myDate = findViewById(R.id.text_my_date);
         mChart = findViewById(R.id.chart);
+
+        votos = new ArrayList<>();
+
+        firebaseAuth = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        idUsuarioLogado = firebaseAuth.getUid();
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = month + 1;
+
+        date = day + "/" + month + "/" + year;
+        myDate.setText(date);
+
+        dataIdVoto = day + "-" + month + "-" + year;
+
+        databaseReference = ConfiguracaoFirebase.getFirebase();
+
+        databaseReferenceVotos = databaseReference.child("usuarios")
+                .child(idUsuarioLogado)
+                .child("votos")
+                .child(dataIdVoto);
+
+        databaseReferenceVotos.addValueEventListener(getListenerFirebaseChart());
 
         myDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,37 +104,113 @@ public class GraficoActivity extends AppCompatActivity {
 
                 String date = day + "/" + month + "/" + year;
                 myDate.setText(date);
-                addChart();
+
+                String dataIdVoto = day + "-" + month + "-" + year;
+
+                databaseReferenceVotos = databaseReference.child("usuarios")
+                        .child(idUsuarioLogado)
+                        .child("votos")
+                        .child(dataIdVoto);
+                databaseReferenceVotos.addValueEventListener(getListenerFirebaseChart());
             }
         };
 
-        // Graph
-        addChart();
-
     }
 
-    private void addChart() {
+    private ValueEventListener getListenerFirebaseChart() {
+
+        return new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // Limpa a lista
+                votos.clear();
+
+                //Listar votos
+                for (DataSnapshot dados : dataSnapshot.getChildren()) {
+
+                    Integer v = Integer.parseInt(String.valueOf(dados.getValue()));
+                    votos.add(v);
+
+                }
+
+                contabilizarVotos(votos);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                Toast.makeText(GraficoActivity.this, "Erro ao acessar a base de dados, verifique sua rede. ", Toast.LENGTH_LONG).show();
+
+            }
+        };
+    }
+
+    private void contabilizarVotos(List<Integer> votos) {
+
+        int excelente = 0;
+        int bom = 0;
+        int medio = 0;
+        int ruim = 0;
+        int pessimo = 0;
+
+        for (Integer voto : votos) {
+
+            if (voto == 1) {
+                excelente++;
+            } else if (voto == 2) {
+                bom++;
+            } else if (voto == 3) {
+                medio++;
+            } else if (voto == 4) {
+                ruim++;
+            } else if (voto == 5) {
+                pessimo++;
+            }
+
+        }
+
+        addChart(excelente, bom, medio, ruim, pessimo);
+    }
+
+    private void addChart(int excelente, int bom, int medio, int ruim, int pessimo) {
 
         List<SliceValue> pieData = new ArrayList<>();
-        Random r = new Random();
-        int value1 = r.nextInt(100);
-        int value2 = r.nextInt(100);
-        int value3 = r.nextInt(100);
-        int value4 = r.nextInt(100);
-        int value5 = r.nextInt(100);
 
-
-        pieData.add(new SliceValue(value5, Color.YELLOW).setLabel("Excelente:" + value5));
-        pieData.add(new SliceValue(value4, Color.BLUE).setLabel("Bom:" + value4));
-        pieData.add(new SliceValue(value2, Color.GRAY).setLabel("Ruim:" + value2));
-        pieData.add(new SliceValue(value3, Color.GREEN).setLabel("Médio:" + value3));
-        pieData.add(new SliceValue(value1, Color.RED).setLabel("Péssimo:" + value1));
-
+        if (excelente > 0) {
+            pieData.add(new SliceValue(excelente, Color.YELLOW).setLabel("Excelente:" + excelente));
+        }
+        if (bom > 0) {
+            pieData.add(new SliceValue(bom, Color.BLUE).setLabel("Bom:" + bom));
+        }
+        if (ruim > 0) {
+            pieData.add(new SliceValue(ruim, Color.GRAY).setLabel("Ruim:" + ruim));
+        }
+        if (medio > 0) {
+            pieData.add(new SliceValue(medio, Color.GREEN).setLabel("Médio:" + medio));
+        }
+        if (pessimo > 0) {
+            pieData.add(new SliceValue(pessimo, Color.RED).setLabel("Péssimo:" + pessimo));
+        }
 
         mPieChartData = new PieChartData(pieData);
         mPieChartData.setHasLabels(true);
         mPieChartData.setHasLabels(true).setValueLabelTextSize(14);
-        mPieChartData.setHasCenterCircle(true).setCenterText1("Votos").setCenterText1FontSize(20).setCenterText1Color(Color.parseColor("#0097A7"));
+
+        int somaVotos = excelente + bom + medio + ruim + pessimo;
+
+        if (somaVotos == 0) {
+            mPieChartData.setHasCenterCircle(true).
+                    setCenterText1("Não possui dados nesse dia.").
+                    setCenterText1FontSize(20).
+                    setCenterText1Color(Color.parseColor("#0097A7"));
+        } else {
+            mPieChartData.setHasCenterCircle(true).
+                    setCenterText1("Votos").
+                    setCenterText1FontSize(20).
+                    setCenterText1Color(Color.parseColor("#0097A7"));
+        }
 
         mChart.setPieChartData(mPieChartData);
     }
