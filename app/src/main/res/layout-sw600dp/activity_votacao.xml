@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/image_emoji_excelente"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="170dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -22,7 +22,7 @@
     <ImageView
         android:id="@+id/image_emoji_bom"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -34,7 +34,7 @@
     <ImageView
         android:id="@+id/image_emoji_medio"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -46,7 +46,7 @@
     <ImageView
         android:id="@+id/image_emoji_ruim"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -58,7 +58,7 @@
     <ImageView
         android:id="@+id/image_emoji_pessimo"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
