@@ -18,7 +18,7 @@
         android:layout_marginEnd="16dp"
         android:background="@android:color/background_light"
         android:padding="10dp"
-        android:text="Gráfico do dia"
+        android:text="@string/grafico_do_dia"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -47,13 +47,13 @@ public class LoginActivity extends AppCompatActivity {
                 String emailDigitado = email.getText().toString();
                 String senhaDigitada = senha.getText().toString();
 
-                if(emailDigitado.trim().length() > 0 && senhaDigitada.trim().length() > 0){
+                if (emailDigitado.trim().length() > 0 && senhaDigitada.trim().length() > 0) {
                     usuario = new Usuario();
                     usuario.setEmail(emailDigitado);
                     usuario.setSenha(senhaDigitada);
                     validarLogin();
-                } else  {
-                    Toast.makeText(LoginActivity.this, "Preencher todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, getApplicationContext().getString(R.string.preecher_todos_campos), Toast.LENGTH_LONG).show();
                 }
 
 
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     abrirTelaPrincipal();
-                    Toast.makeText(LoginActivity.this, "Sucesso ao fazer login!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, getApplicationContext().getString(R.string.sucesso_login), Toast.LENGTH_LONG).show();
 
                 } else {
 
@@ -90,15 +90,15 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthInvalidUserException e) {
-                        erroExcecao = "E-mail não existe ou foi desativado";
+                        erroExcecao = getApplicationContext().getString(R.string.ececao_email_invalido_desativado);
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-                        erroExcecao = "Senha está errada";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_senha_errada);
                     } catch (Exception e) {
-                        erroExcecao = "Ao logar usuário";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_ao_logar);
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(LoginActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, getApplicationContext().getString(R.string.erro) + " " + erroExcecao, Toast.LENGTH_LONG).show();
                 }
 
             }

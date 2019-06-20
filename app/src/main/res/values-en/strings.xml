@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">DIFRAN</string>
+    <string name="cadastre_se">No account yet? Register</string>
+    <string name="logar">LOGIN</string>
+    <string name="cadastrar">REGISTER</string>
+    <string name="sair">EXIT</string>
+    <string name="obrigado_volte_sempre">Thank you, come back always</string>
+    <string name="digite_seu_nome">Type your name</string>
+    <string name="digite_seu_email">Type your e-mail</string>
+    <string name="digite_sua_senha">Type your password</string>
+    <string name="grafico_do_dia">Graph of the day</string>
+    <string name="preecher_todos_campos">Fill all fields</string>
+    <string name="sucesso_ao_cadastrar">Successful user registration</string>
+    <string name="excecao_senha_forte">Enter a stronger password, containing more characters and letters and numbers!</string>
+    <string name="excecao_email_invalido">The typed email is invalid, enter a new email</string>
+    <string name="excecao_email_em_uso">This email is already in use on the App!</string>
+    <string name="excecao_ao_cadastrar">By registering user</string>
+    <string name="erro">Error:</string>
+    <string name="nao_possui_dados">You have no data this day.</string>
+    <string name="votos">Vote</string>
+    <string name="excelente">Great:</string>
+    <string name="bom">Good:</string>
+    <string name="ruim">Bad:</string>
+    <string name="medio">Medium:</string>
+    <string name="pessimo">Terrible:</string>
+    <string name="erro_acesso_database">Error accessing database, check your network.</string>
+    <string name="sucesso_login">Success when signing in!</string>
+    <string name="ececao_email_invalido_desativado">E-mail does not exist or has been disabled</string>
+    <string name="excecao_senha_errada">Password is wrong.</string>
+    <string name="excecao_ao_logar">When logging in user</string>
+</resources>

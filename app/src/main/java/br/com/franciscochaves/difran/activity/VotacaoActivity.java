@@ -34,7 +34,7 @@ public class VotacaoActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if(mediaPlayer != null && mediaPlayer.isPlaying()) {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
@@ -123,7 +123,7 @@ public class VotacaoActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        month +=1;
+        month += 1;
 
         String dataIdVoto = day + "-" + month + "-" + year;
 
@@ -137,7 +137,7 @@ public class VotacaoActivity extends AppCompatActivity {
 
     private void tocarMusica() {
 
-        if( mediaPlayer != null) {
+        if (mediaPlayer != null) {
             mediaPlayer.start();
         }
 

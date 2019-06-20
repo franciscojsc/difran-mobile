@@ -141,7 +141,7 @@ public class GraficoActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-                Toast.makeText(GraficoActivity.this, "Erro ao acessar a base de dados, verifique sua rede. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(GraficoActivity.this, getApplicationContext().getString(R.string.erro_acesso_database), Toast.LENGTH_LONG).show();
 
             }
         };
@@ -179,19 +179,19 @@ public class GraficoActivity extends AppCompatActivity {
         List<SliceValue> pieData = new ArrayList<>();
 
         if (excelente > 0) {
-            pieData.add(new SliceValue(excelente, Color.YELLOW).setLabel("Excelente:" + excelente));
+            pieData.add(new SliceValue(excelente, Color.YELLOW).setLabel(getApplicationContext().getString(R.string.excelente) + excelente));
         }
         if (bom > 0) {
-            pieData.add(new SliceValue(bom, Color.BLUE).setLabel("Bom:" + bom));
+            pieData.add(new SliceValue(bom, Color.BLUE).setLabel(getApplicationContext().getString(R.string.bom) + bom));
         }
         if (ruim > 0) {
-            pieData.add(new SliceValue(ruim, Color.GRAY).setLabel("Ruim:" + ruim));
+            pieData.add(new SliceValue(ruim, Color.GRAY).setLabel(getApplicationContext().getString(R.string.ruim) + ruim));
         }
         if (medio > 0) {
-            pieData.add(new SliceValue(medio, Color.GREEN).setLabel("Médio:" + medio));
+            pieData.add(new SliceValue(medio, Color.GREEN).setLabel(getApplicationContext().getString(R.string.medio) + medio));
         }
         if (pessimo > 0) {
-            pieData.add(new SliceValue(pessimo, Color.RED).setLabel("Péssimo:" + pessimo));
+            pieData.add(new SliceValue(pessimo, Color.RED).setLabel(getApplicationContext().getString(R.string.pessimo) + pessimo));
         }
 
         mPieChartData = new PieChartData(pieData);
@@ -202,12 +202,12 @@ public class GraficoActivity extends AppCompatActivity {
 
         if (somaVotos == 0) {
             mPieChartData.setHasCenterCircle(true).
-                    setCenterText1("Não possui dados nesse dia.").
+                    setCenterText1(getApplicationContext().getString(R.string.nao_possui_dados)).
                     setCenterText1FontSize(20).
                     setCenterText1Color(Color.parseColor("#0097A7"));
         } else {
             mPieChartData.setHasCenterCircle(true).
-                    setCenterText1("Votos").
+                    setCenterText1(getApplicationContext().getString(R.string.votos)).
                     setCenterText1FontSize(20).
                     setCenterText1Color(Color.parseColor("#0097A7"));
         }

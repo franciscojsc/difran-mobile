@@ -56,7 +56,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuario.setSenha(senhaDigitada);
                     cadastrarUsuario();
                 } else  {
-                    Toast.makeText(CadastroUsuarioActivity.this, "Preencher todos os campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, getApplicationContext().getString(R.string.preecher_todos_campos), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -73,7 +73,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(CadastroUsuarioActivity.this, "Suceso ao cadastrar usuário", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, getApplicationContext().getString(R.string.sucesso_ao_cadastrar), Toast.LENGTH_LONG).show();
 
                     String identificadorUsuario = autenticacao.getCurrentUser().getUid();
                     usuario.setId(identificadorUsuario);
@@ -88,17 +88,17 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthWeakPasswordException e) {
-                        erroExcecao = "Digite uma senha mais forte, contendo mais caracteres e com letras e números!";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_senha_forte);
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-                        erroExcecao = "O e-mail digitado é inválido, digite um novo e-mail";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_email_invalido);
                     } catch (FirebaseAuthUserCollisionException e) {
-                        erroExcecao = "Esse e-mail já está em uso no App!";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_email_em_uso);
                     } catch (Exception e) {
-                        erroExcecao = "Ao cadastrar usuário";
+                        erroExcecao = getApplicationContext().getString(R.string.excecao_ao_cadastrar);
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroUsuarioActivity.this, getApplicationContext().getString(R.string.erro) + erroExcecao, Toast.LENGTH_LONG).show();
 
                 }
             }
