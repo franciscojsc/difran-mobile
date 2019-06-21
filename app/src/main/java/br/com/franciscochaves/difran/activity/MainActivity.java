@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button botaoSair;
     private ImageView votacao;
     private ImageView grafico;
+    private ImageView relatorio;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         botaoSair = findViewById(R.id.button_sair);
         votacao = findViewById(R.id.image_votacao);
         grafico = findViewById(R.id.image_grafico);
+        relatorio = findViewById(R.id.image_relatorio);
 
         botaoSair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), GraficoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        relatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RelatorioActivity.class);
                 startActivity(intent);
             }
         });

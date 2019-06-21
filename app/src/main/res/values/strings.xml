@@ -2,7 +2,7 @@
     <string name="app_name">DIFRAN</string>
     <string name="cadastre_se">Não tem conta? Cadastre-se</string>
     <string name="logar">LOGAR</string>
-     <string name="cadastrar">CADASTRAR</string>
+    <string name="cadastrar">CADASTRAR</string>
     <string name="sair">SAIR</string>
     <string name="obrigado_volte_sempre">Obrigado Volte Sempre!!!</string>
     <string name="digite_seu_nome">Digite seu nome</string>
@@ -28,4 +28,5 @@
     <string name="ececao_email_invalido_desativado">E-mail não existe ou foi desativado</string>
     <string name="excecao_senha_errada">Senha está errada</string>
     <string name="excecao_ao_logar">Ao logar usuário</string>
+    <string name="text_relatorio">Relatório</string>
 </resources>
