@@ -29,4 +29,6 @@
     <string name="excecao_senha_errada">Senha está errada</string>
     <string name="excecao_ao_logar">Ao logar usuário</string>
     <string name="text_relatorio">Relatório</string>
+    <string name="esqueceu_senha">Esqueceu a senha</string>
+    <string name="recupera_senha">RECUPERAR SENHA</string>
 </resources>

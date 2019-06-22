@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.RelatorioActivity"></activity>
+        <activity android:name=".activity.ResetUsuarioActivity"></activity>
         <activity android:name=".activity.AgradecimentoActivity" />
         <activity android:name=".activity.GraficoActivity" />
         <activity android:name=".activity.VotacaoActivity" />
