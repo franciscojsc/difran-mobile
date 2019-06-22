@@ -39,8 +39,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_relatorio"
         app:layout_constraintStart_toEndOf="@+id/image_votacao"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/grafico" />
+
+    <ImageView
+        android:id="@+id/image_relatorio"
+        android:layout_width="220dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toEndOf="@+id/image_grafico"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/relatorio" />
+
 </android.support.constraint.ConstraintLayout>

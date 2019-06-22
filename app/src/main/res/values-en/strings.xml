@@ -28,6 +28,7 @@
     <string name="ececao_email_invalido_desativado">E-mail does not exist or has been disabled</string>
     <string name="excecao_senha_errada">Password is wrong.</string>
     <string name="excecao_ao_logar">When logging in user</string>
+    <string name="text_relatorio">Report</string>
     <string name="esqueceu_senha">Forgot Password</string>
     <string name="recupera_senha">RECOVER PASSWORD</string>
 </resources>
